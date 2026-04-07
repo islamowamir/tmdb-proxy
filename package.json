@@ -1,0 +1,5 @@
+{
+  "name": "tmdb-proxy",
+  "private": true,
+  "type": "module"
+}
