@@ -1,6 +1,20 @@
 {
   "rewrites": [
-    { "source": "/api/tmdb/(.*)", "destination": "/api/tmdb" },
-    { "source": "/api/img/(.*)", "destination": "/api/img" }
+    { "source": "/api/tmdb/:path*", "destination": "https://api.themoviedb.org/3/:path*" },
+    { "source": "/api/img/:path*", "destination": "https://image.tmdb.org/t/p/:path*" }
+  ],
+  "headers": [
+    {
+      "source": "/api/img/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=2592000, immutable" }
+      ]
+    },
+    {
+      "source": "/api/tmdb/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=300" }
+      ]
+    }
   ]
 }
